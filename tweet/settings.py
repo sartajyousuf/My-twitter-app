@@ -86,7 +86,7 @@ WSGI_APPLICATION = 'tweet.wsgi.application'
 
 DATABASES = {
     'default': {
-       ENGINE': 'django.db.backends.postgresql',
+       'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'd2ufivo65iqlo2',
         'USER': 'utaagcastirddr',
         'HOST': 'ec2-3-230-38-145.compute-1.amazonaws.com',
