@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <title>Twitter-Clone</title>
+    <!-- Icon -->
+    <link href="{% static 'img\logo-twitterblue.svg' %}" rel="icon">
+    <!-- CSS -->
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <!-- JQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <!-- Script "LIKES" -->
+    <script src="{% static 'app.js' %}"></script>
+  </head>
+  <body class="home">
+    {% load cloudinary %} 
+    <a href="{% url 'upload' %}" class="btn btn-secondary" style="position:fixed; color: yellow;">Upload New Tweet</a>
+    {% for tweet in tweets %}
+    <div class="container">
+      <div class="main">
+        <div class="tweet-list">
+          <div class="tweet">
+            <div class="user">
+              <a href="#">
+                <img src="{% static 'img/sample-icon.jpg' %}" class="">
+              </a>
+            </div>
+
+            <div class="content">
+              <div class="name">
+                <a href="#" class="">
+                  <span class="nickname"> {{ tweet.name }} </span>
+                  <span class="datetime"> {{ tweet.created_at }} </span>
+                </a>
+                <a style="border: 1px solid brown; border-radius: 30%; padding: 8px; background-color: maroon; color: white;" href="/update/{{tweet.id}}">Edit</a>
+                <br />
+                <a style="border: 1px solid red; border-radius: 20%; padding: 8px; background-color: red; color: white; margin-right: 20px;" href="/delete/{{tweet.id}}">Delete</a>
+              </div>
+
+              <div class="input-area" style="word-wrap: break-word;">{{ tweet.body }}</div>
+
+              <img src="{{ tweet.image.url }}" style="width: 300px">
+                <br> <br>
+                <div class="like-count">
+                    <form action="{% url 'LikePost' tweet.pk %}" method="POST">
+                        {% csrf_token %}
+                        <button type="submit", name="tweet_id", value="{{ tweet.id }}", class="btn btn-primary btn-sm">Like</button> 
+                        {{ tweet.like_count }}
+                    </form>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
