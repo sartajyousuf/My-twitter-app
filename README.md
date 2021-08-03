@@ -1,3 +1,3 @@
 # My-twitter-app
 Django project
-created a repo
+click to see Live Demo
