@@ -86,8 +86,12 @@ WSGI_APPLICATION = 'tweet.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+       ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'd2ufivo65iqlo2',
+        'USER': 'utaagcastirddr',
+        'HOST': 'ec2-3-230-38-145.compute-1.amazonaws.com',
+        'PORT': 5432,
+        'PASSWORD': 'b9a6a72c06363164a5fa480ac6cd38159f33e27be4aff80f2cf032de3723387a'
     }
 }
 
