@@ -1,3 +1,10 @@
 # My-twitter-app
 Django project
-click to see Live Demo
+
+
+Tech used
+*Html
+*css
+*Javascript/ jquesry
+*Django
+*Cloudinary(For image hosting)
